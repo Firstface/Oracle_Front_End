@@ -9,7 +9,8 @@ function CoinCalculator() {
   const [error, setError] = useState('');
 
   const fetchMinimumCoins = () => {
-    const url = `http://localhost:8080/coins?amount=${amount}&denominations=${denominations.split(',').join('&denominations=')}`;
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    const url = `${backendUrl}/coins?amount=${amount}&denominations=${denominations.split(',').join('&denominations=')}`;
 
     axios.get(url)
       .then(response => {
